@@ -6,6 +6,7 @@ public class PersistantData : MonoBehaviour
 {
     public static PersistantData Instance;
     public string playerName;
+    public int currentScore;
 
     private void Awake()
     {
