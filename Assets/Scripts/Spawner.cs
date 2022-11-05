@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject[] enemy;
     public float spawnxBoundary = 6;
     private GameManager gameManagerScript;
 
@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
             //print(Time.time);
             if (gameManagerScript.gameRunning)
             {
-                Instantiate(enemy, RandomSpawnPos(), enemy.transform.rotation);
+                Instantiate(enemy[RandomEnemy()], RandomSpawnPos(), enemy[0].transform.rotation);
                 // change interval
                 intervalTime = intervalTime - .001f;
                 //Debug.Log(intervalTime);
@@ -53,5 +53,10 @@ public class Spawner : MonoBehaviour
     private Vector3 RandomSpawnPos()
     {
         return new Vector3(Random.Range(-spawnxBoundary, spawnxBoundary), 7, -1);
+    }
+
+    private int RandomEnemy()
+    {
+        return Random.Range(0, enemy.Length);
     }
 }
