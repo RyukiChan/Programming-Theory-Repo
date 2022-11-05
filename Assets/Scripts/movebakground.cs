@@ -4,7 +4,7 @@ using UnityEngine;
 // Applied to all Scene Backgrounds
 public class movebakground : MonoBehaviour
 {   [Range(-1f, 1f)]
-    public float scrollSpeed = 0.5f;
+    private float scrollSpeed = 0.5f;
     private float offset;
     private Material mat;
 

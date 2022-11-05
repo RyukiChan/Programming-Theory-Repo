@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentScore = 0;
+        //PersistantData.Instance = null;
         playerName.text = PersistantData.Instance.playerName;
     }
 

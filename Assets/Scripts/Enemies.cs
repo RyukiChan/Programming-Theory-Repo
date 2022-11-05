@@ -10,7 +10,24 @@ public class Enemies : MonoBehaviour
     private Renderer enemyRend;
     private float destroyBoundary = -5;
     private GameManager gameManagerScript;
-    public int hitPoint = 1;
+
+    private int protected_hitPoint = 1;
+    public int hitPoint
+    {
+        get { return protected_hitPoint; }
+        set {
+
+            if (value < 0.0f)
+            {
+                Debug.Log("Negative value for a kill? I don't think so");
+            }
+            else
+            {
+            protected_hitPoint = value; }
+            }
+         
+    }
+    
     public int missPoint = -1;
     public ParticleSystem explode;
     public GameObject boom;
@@ -55,7 +72,7 @@ public class Enemies : MonoBehaviour
         if (other.CompareTag("bullet"))
         {
             //Update Score
-            gameManagerScript.UpdateScore(hitPoint);
+            gameManagerScript.UpdateScore(protected_hitPoint);
             //Make explosion and sound
             Instantiate(boom);
             Instantiate(explode, transform.position, transform.rotation);

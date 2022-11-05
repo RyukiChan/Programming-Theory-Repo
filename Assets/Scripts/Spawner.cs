@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] enemy;
-    public float spawnxBoundary = 6;
+    private float spawnxBoundary = 6;
     private GameManager gameManagerScript;
 
     // Start is called before the first frame update

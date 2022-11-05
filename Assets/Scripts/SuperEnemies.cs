@@ -15,6 +15,7 @@ public class SuperEnemies : Enemies
 
     public override void OnTriggerEnter(Collider other)
     {
+        hitPoint = 7;
         count = count + 1;
      
         if (count == hitsToKill)

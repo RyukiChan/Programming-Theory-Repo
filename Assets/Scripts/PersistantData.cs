@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PersistantData : MonoBehaviour
 {
-    public static PersistantData Instance;
+    public static PersistantData Instance { get; private set; }
     public string playerName;
     public int currentScore;
 
