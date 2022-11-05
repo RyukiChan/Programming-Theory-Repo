@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class PersistantData : MonoBehaviour
 {
     public static PersistantData Instance { get; private set; }
     public string playerName;
     public int currentScore;
+    public string highUserName;
+    public int highScore;
 
     private void Awake()
     {
@@ -18,4 +21,40 @@ public class PersistantData : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+    [System.Serializable]
+    class SaveData
+    {
+        public string userName;
+        public int highScore;
+    }
+
+    public void SaveHighScore(int newHigh)
+    {
+        SaveData data = new SaveData();
+        data.userName = playerName;
+        data.highScore = newHigh;
+
+        string json = JsonUtility.ToJson(data);
+
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+        
+    }
+
+    public void LoadHighScore()
+    {
+        string path = Application.persistentDataPath + "/savefile.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+            highScore = data.highScore;
+            highUserName = data.userName;
+        }
+    }
+
+
+
+
+
 }
