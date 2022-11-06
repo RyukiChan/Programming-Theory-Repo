@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -206523286633162624}
   m_Layer: 0
   m_Name: SuperEnemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -127,7 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theMaterial:
   - {fileID: 2100000, guid: 528096b4b8f54844c85171fd215915d9, type: 2}
-  hitPoint: 7
   missPoint: -1
   explode: {fileID: 1783276646780061819, guid: 1c0520325bd5b534188c40bef406dc5c, type: 3}
   boom: {fileID: 1043881499392033009, guid: 75282102d7c373d4f95df9275e2b43e9, type: 3}

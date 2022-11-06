@@ -15,19 +15,28 @@ public class SuperEnemies : Enemies
 
     public override void OnTriggerEnter(Collider other)
     {
-        hitPoint = 7;
-        count = count + 1;
-     
-        if (count == hitsToKill)
+        if (other.CompareTag("bullet") || other.CompareTag("forcefield"))
         {
-            base.OnTriggerEnter(other);
-        }
-        else
-        {
-        Destroy(other.gameObject);
-        Instantiate(boom);
+            hitPoint = 7;
+            count = count + 1;
+
+            if (count == hitsToKill || other.CompareTag("forcefield"))
+            {
+                base.OnTriggerEnter(other);
+            }
+            else
+            {
+                if (other.CompareTag("bullet"))
+                {
+                    Destroy(other.gameObject);
+                    Instantiate(boom);
+                }
+
+            }
         }
 
-        
+
+
+
     }
 }

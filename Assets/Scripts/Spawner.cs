@@ -7,11 +7,13 @@ public class Spawner : MonoBehaviour
     public GameObject[] enemy;
     private float spawnxBoundary = 6;
     private GameManager gameManagerScript;
+    private PlayerController playerControllerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         StartCoroutine(Interval());
     }
 
@@ -34,10 +36,26 @@ public class Spawner : MonoBehaviour
             //print(Time.time);
             if (gameManagerScript.gameRunning)
             {
-                Instantiate(enemy[RandomEnemy()], RandomSpawnPos(), enemy[0].transform.rotation);
+
+                int enemyIndex = RandomEnemy();
+                if (enemy[enemyIndex].CompareTag("powerup") && GameObject.FindGameObjectsWithTag("powerup").Length > 0)
+                {
+                    //Debug.Log("Already a powerup in the game");
+                }
+                else if (enemy[enemyIndex].CompareTag("powerup") && playerControllerScript.hasPowerUp == true)
+                {
+                    //Debug.Log("Already have a powerup enabled");
+                }
+
+                else
+                {
+                Instantiate(enemy[enemyIndex], RandomSpawnPos(), enemy[enemyIndex].transform.rotation);
                 // change interval
                 intervalTime = intervalTime - .001f;
                 //Debug.Log(intervalTime);
+                }
+
+               
             }
 
 

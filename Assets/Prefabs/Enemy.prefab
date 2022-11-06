@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6496309448138372006}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -128,7 +128,6 @@ MonoBehaviour:
   theMaterial:
   - {fileID: 2100000, guid: d447b2ff5cf016c4f96c21f6a74dd609, type: 2}
   - {fileID: 2100000, guid: d7f73dffe7c8d0140a819a7c4c7d71e9, type: 2}
-  hitPoint: 4
   missPoint: -1
   explode: {fileID: 1783276646780061819, guid: 1c0520325bd5b534188c40bef406dc5c, type: 3}
   boom: {fileID: 1043881499392033009, guid: 75282102d7c373d4f95df9275e2b43e9, type: 3}

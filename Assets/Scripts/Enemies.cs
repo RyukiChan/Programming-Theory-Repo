@@ -69,7 +69,7 @@ public class Enemies : MonoBehaviour
     public virtual void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("bullet"))
+        if (other.CompareTag("bullet") || other.CompareTag("forcefield"))
         {
             //Update Score
             gameManagerScript.UpdateScore(protected_hitPoint);
@@ -78,7 +78,11 @@ public class Enemies : MonoBehaviour
             Instantiate(explode, transform.position, transform.rotation);
             //Break bullet and target
             Destroy(gameObject);
+            if (other.CompareTag("bullet"))
+            {
             Destroy(other.gameObject);
+            }
+            
         }
     }
 
